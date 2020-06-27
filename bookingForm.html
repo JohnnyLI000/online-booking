@@ -1,0 +1,120 @@
+<html>
+
+    <title>Assignment2</title>
+    <head>    <script type="text/javascript" src="booking.js"></script>
+    </head>
+    <style>
+        #form-messages {
+            background-color: rgb(255, 232, 232);
+            border: 1px solid red;
+            color: red;
+            display: none;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding: 10px 25px;
+            max-width: 250px;
+        }
+        input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        #btn-submit {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+        div {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        #resetButton{
+            display:block;
+            width: 50px;
+            background-color:skyblue;
+            color: black;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+    </style>
+
+    <body>
+        <?php
+//The time
+$month = date('m');
+$day = date('d');
+$year = date('Y');
+$time = date("h:i:sa");
+$today = $year . '-' . $month . '-' . $day;
+?>
+        <div class="form">
+            <h1>Taxi booking form</h1>
+
+            <ul id="form-messages"></ul>
+            <label for="customerName">Username</label>
+            <input type="text" id="customerName" spellcheck="false">
+            <br>
+            <label for="contactPhone">Contact Phone</label>
+            <input type="text" id="contactPhone">
+            <br>
+
+            <label for="pickUpAddress">pick up address</label>
+            <input type="text" id="pickUpAddress"> 
+            <br>
+
+            <label for="destinationAddress">Destination address </label>
+            <input type="text" id="destinationAddress"> 
+            <br>
+
+            <label for= "date">Date</label>
+            <input type="date" value="<?php echo $today; ?>" class="form-control" id = "date">
+            <br>
+
+            <label for= "time">Time</label>
+            <input type="time" value="<?php echo $time; ?>" class="form-control" id="time" >
+            <br>
+
+            <button type="submit" id="btn-submit">create request</button>
+
+
+            <button name="reset" type="button" id= "resetButton" onclick="clearForm()"> reset</button>
+
+        </div>
+
+        <div id="confirmation-message"></div>
+        <script>
+            function clearForm(){
+                document.getElementById('customerName').value = '';
+                document.getElementById('contactPhone').value = '';
+                document.getElementById('pickUpAddress').value = '';
+                document.getElementById('destinationAddress').value = '';
+                document.getElementById('date').value = '';
+                document.getElementById('time').value = '';
+                document.getElementById('btn-submit').value = '';
+                document.getElementById('form-messages').innerHTML= '';
+                document.getElementById('confirmation-message').innerHTML = '';
+
+            }
+        </script>
+    </body>
